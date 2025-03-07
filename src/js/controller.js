@@ -124,6 +124,10 @@ const clearLocalStorage = function () {
   localStorage.clear();
 };
 
+const newFeature = function () {
+  console.log('Testing GIT');
+};
+
 const init = function () {
   bookmarksView.addHandlerRender(addBookmarksFromStorage);
   recipeView.addHandlerRender(readRecipe);
@@ -132,7 +136,8 @@ const init = function () {
   recipeView.addHandlerServingsRender(servingsControl);
   recipeView.addHandlerBookmarks(controlAddBookmark);
   addRecipeView.addHandlerExtractFormData(addNewRecipe);
-  console.log('Welcome');
+  console.log('New Change');
+  newFeature();
 };
 init();
 clearLocalStorage();

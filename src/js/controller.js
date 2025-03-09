@@ -27,6 +27,10 @@ const timeout = function (s) {
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
+/**
+ * Displays the recipe view and updates the bookmarks
+ * @returns {undefined}
+ */
 const readRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
@@ -38,19 +42,20 @@ const readRecipe = async function () {
     // Loading recipe
     await model.loadRecipe(id);
 
-    console.log(model.state.recipe);
     // Rendering recipe
     recipeView.render(model.state.recipe);
 
     // Rendering bookmark
     bookmarksView.update(model.state.bookmarks);
   } catch (err) {
-    console.error(err);
     console.log(`Error inside readRecipe function : ${err}`);
     // throw err;
   }
 };
 
+/**
+ *
+ */
 const readSearchResults = async function () {
   try {
     const searchQuery = searchView.getQuery();
@@ -58,7 +63,6 @@ const readSearchResults = async function () {
 
     await model.loadSearchResults(searchQuery);
 
-    console.log(model.state.search.data);
     const dataDetails = model.state.search.data;
     const dataPerPage = model.searchResultsPerPage();
     resultsView.render(dataPerPage);
